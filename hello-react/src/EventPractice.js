@@ -7,6 +7,8 @@ class EventPractice extends Component {
   };
 
   handleChange = (e) => {
+    console.log(e.persist());
+    console.log(e);
     this.setState({
       [e.target.name]: e.target.value,
     });
