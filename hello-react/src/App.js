@@ -1,20 +1,8 @@
-import React, { Component } from "react";
-//import EventPractice from "./EventPractice";
-import ScrollBox from "./ScrollBox";
+import React from "react";
+import IterationSample from "./IterationSample";
 
-class App extends Component {
-  render() {
-    return (
-      <div>
-        <ScrollBox ref={(ref) => (this.scrollBox = ref)} />
-        <button onClick={() => this.scrollBox.scrollToBottom()}>
-          맨 밑으로
-        </button>
-      </div>
-    );
-  }
-
-  //return <EventPractice />;
-}
+const App = () => {
+  return <IterationSample />;
+};
 
 export default App;
