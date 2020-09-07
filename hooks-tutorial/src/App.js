@@ -1,7 +1,8 @@
-import React from "react";
+import React from 'react';
+import Info from './Info';
 
-function App() {
-  return <div>Hooks Tutorial</div>;
-}
+const App = () => {
+  return <Info />;
+};
 
 export default App;
