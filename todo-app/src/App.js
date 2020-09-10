@@ -1,7 +1,15 @@
-import React from "react";
+import React from 'react';
+import ToDoTemplate from './components/ToDoTemplate';
+import TodoInsert from './components/TodoInsert';
+import TodoList from './components/TodoList';
 
 function App() {
-  return <div>To-Do</div>;
+  return (
+    <ToDoTemplate>
+      <TodoInsert />
+      <TodoList />
+    </ToDoTemplate>
+  );
 }
 
 export default App;
