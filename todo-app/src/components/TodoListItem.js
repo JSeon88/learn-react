@@ -1,11 +1,12 @@
 import React from 'react';
-import './TodoListItem.scss';
+import PropTypes from 'prop-types';
 import cn from 'classnames';
 import {
   MdCheckBoxOutlineBlank,
   MdCheckBox,
   MdRemoveCircleOutline,
 } from 'react-icons/md';
+import './TodoListItem.scss';
 
 const TodoListItem = ({todo, onRemove, onToggle}) => {
   const {id, done, subject} = todo;
@@ -20,6 +21,16 @@ const TodoListItem = ({todo, onRemove, onToggle}) => {
       </div>
     </div>
   );
+};
+
+TodoListItem.propTypes = {
+  todo: PropTypes.shape({
+    id: PropTypes.number,
+    done: PropTypes.bool,
+    subject: PropTypes.string,
+  }),
+  onRemove: PropTypes.func,
+  onToggle: PropTypes.func,
 };
 
 export default TodoListItem;

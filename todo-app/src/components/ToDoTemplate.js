@@ -1,10 +1,11 @@
 import React, {useState, useCallback, useEffect} from 'react';
 import axios from 'axios';
+
 import TodoInsert from './TodoInsert';
 import TodoList from './TodoList';
 import './ToDoTemplate.scss';
 
-const ToDoTemplate = ({children}) => {
+const ToDoTemplate = () => {
   const [todos, setTodos] = useState([]);
   const fetchData = async () => {
     try {
@@ -55,7 +56,6 @@ const ToDoTemplate = ({children}) => {
   return (
     <div className="TodoTemplate">
       <div className="app-title">일정 관리</div>
-      <div className="content">{children}</div>
       <TodoInsert onInsert={onInsert} />
       <TodoList todos={todos} onRemove={onRemove} onToggle={onToggle} />
     </div>

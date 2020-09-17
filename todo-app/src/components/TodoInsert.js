@@ -1,5 +1,7 @@
 import React, {useState, useCallback} from 'react';
 import {MdAdd} from 'react-icons/md';
+import PropTypes from 'prop-types';
+
 import './TodoInsert.scss';
 
 const TodoInsert = ({onInsert}) => {
@@ -31,6 +33,10 @@ const TodoInsert = ({onInsert}) => {
       </button>
     </form>
   );
+};
+
+TodoInsert.propTypes = {
+  onInsert: PropTypes.func,
 };
 
 export default TodoInsert;
