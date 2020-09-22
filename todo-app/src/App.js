@@ -2,7 +2,7 @@ import React from 'react';
 import ToDoTemplate from './components/ToDoTemplate';
 
 const App = () => {
-  return <ToDoTemplate></ToDoTemplate>;
+  return <ToDoTemplate />;
 };
 
 export default App;
