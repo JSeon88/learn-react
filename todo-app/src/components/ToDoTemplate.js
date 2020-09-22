@@ -13,6 +13,7 @@ const ToDoTemplate = () => {
       setTodos(response.data.data);
     } catch (e) {
       console.log(e);
+      alert('리스트를 불러 오는데 실패하였습니다.');
     }
   };
 
@@ -22,22 +23,30 @@ const ToDoTemplate = () => {
 
   const onInsert = useCallback(
     async (subject) => {
-      await axios({
-        method: 'post',
-        url: 'http://localhost:3001/todos',
-        data: {
-          subject,
-        },
-      });
-      await fetchData();
+      try {
+        await axios({
+          method: 'post',
+          url: 'http://localhost:3001/todos',
+          data: {
+            subject,
+          },
+        });
+        await fetchData();
+      } catch (e) {
+        alert('등록 실패');
+      }
     },
     [todos],
   );
 
   const onRemove = useCallback(
     async (id) => {
-      await axios.delete(`http://localhost:3001/todos/${id}`);
-      await fetchData();
+      try {
+        await axios.delete(`http://localhost:3001/todos/${id}`);
+        await fetchData();
+      } catch (e) {
+        alert('삭제 실패');
+      }
     },
     [todos],
   );
@@ -45,10 +54,17 @@ const ToDoTemplate = () => {
   const onToggle = useCallback(
     async (id) => {
       const todo = todos.find((todo) => todo.id === id);
-      await axios.put(`http://localhost:3001/todos/${id}/done`, {
-        done: !todo.done,
-      });
-      await fetchData();
+      if (!todo) {
+        return;
+      }
+      try {
+        await axios.put(`http://localhost:3001/todos/${id}/done`, {
+          done: !todo.done,
+        });
+        await fetchData();
+      } catch (e) {
+        alert('토클 처리 실패');
+      }
     },
     [todos],
   );
