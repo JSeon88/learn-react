@@ -29,8 +29,8 @@ TodoListItem.propTypes = {
     done: PropTypes.bool,
     subject: PropTypes.string,
   }),
-  onRemove: PropTypes.func,
-  onToggle: PropTypes.func,
+  onRemove: PropTypes.func.isRequired,
+  onToggle: PropTypes.func.isRequired,
 };
 
 export default TodoListItem;

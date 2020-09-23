@@ -21,9 +21,13 @@ const TodoList = ({todos, onRemove, onToggle}) => {
 };
 
 TodoList.propTypes = {
-  todos: PropTypes.array,
-  onRemove: PropTypes.func,
-  onToggle: PropTypes.func,
+  todos: PropTypes.array.shape({
+    id: PropTypes.number,
+    done: PropTypes.bool,
+    subject: PropTypes.string,
+  }),
+  onRemove: PropTypes.func.isRequired,
+  onToggle: PropTypes.func.isRequired,
 };
 
 export default TodoList;
