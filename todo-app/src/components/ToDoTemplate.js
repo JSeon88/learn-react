@@ -74,8 +74,8 @@ const ToDoTemplate = () => {
     [todos],
   );
 
-  const validCheckId = (id) => {
-    if (todos.findIndex((todo) => todo.id === id) === -1) {
+  const validCheckId = (checkId) => {
+    if (!todos.find(({id}) => id === checkId)) {
       alert('잘못된 id입니다.');
       return false;
     }
