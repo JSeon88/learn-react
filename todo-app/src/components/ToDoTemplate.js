@@ -23,6 +23,10 @@ const ToDoTemplate = () => {
 
   const onInsert = useCallback(
     async (subject) => {
+      if (subject.trim().length === 0) {
+        alert('할 일을 입력해주세요.');
+        return;
+      }
       try {
         await axios({
           method: 'post',
@@ -41,6 +45,7 @@ const ToDoTemplate = () => {
 
   const onRemove = useCallback(
     async (id) => {
+      if (!validCheckId(id)) return;
       try {
         await axios.delete(`http://localhost:3001/todos/${id}`);
         await fetchData();
@@ -53,6 +58,7 @@ const ToDoTemplate = () => {
 
   const onToggle = useCallback(
     async (id) => {
+      if (!validCheckId(id)) return;
       const todo = todos.find((todo) => todo.id === id);
       if (!todo) {
         return;
@@ -68,6 +74,14 @@ const ToDoTemplate = () => {
     },
     [todos],
   );
+
+  const validCheckId = (checkId) => {
+    if (!todos.find(({id}) => id === checkId)) {
+      alert('잘못된 id입니다.');
+      return false;
+    }
+    return true;
+  };
 
   return (
     <div className="TodoTemplate">
