@@ -1,7 +1,16 @@
 import React from "react";
 
-function App() {
-  return <h2>context api</h2>;
-}
+import ColorBox from "./components/ColorBox";
+import ColorContext from "./contexts/Color";
+
+const App = () => {
+  return (
+    <ColorContext.Provider value={{ color: "red" }}>
+      <div>
+        <ColorBox />
+      </div>
+    </ColorContext.Provider>
+  );
+};
 
 export default App;
