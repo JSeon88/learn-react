@@ -47,3 +47,19 @@ function reducer(state = initialState, action) {
 
 // 스토어 생성
 const store = createStore(reducer);
+
+// reder 함수
+// 상태가 업데이트 될 때마다 호출
+const render = () => {
+  const state = store.getState(); // 현재 상태 불러오기
+  if (state.toggle) {
+    divToggle.classList.add("active");
+  } else {
+    divToggle.classList.remove("active");
+  }
+
+  // 카운터 처리
+  counter.innerText = state.counter;
+};
+
+render();
