@@ -19,3 +19,26 @@ const initialState = {
   toggle: false,
   counter: 0,
 };
+
+// 리듀서 함수 정의
+function reducer(state = initialState, action) {
+  switch (action.tyep) {
+    case TOGGLE_SWITCH:
+      return {
+        ...state, //불변성 유지
+        toggle: !state.toggle,
+      };
+    case INCREASE:
+      return {
+        ...state, //불변성 유지
+        counter: state.counter + action.difference,
+      };
+    case DECREASE:
+      return {
+        ...state, //불변성 유지
+        counter: state.counter - 1,
+      };
+    default:
+      return state;
+  }
+}
