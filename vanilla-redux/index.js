@@ -63,3 +63,7 @@ const render = () => {
 };
 
 render();
+
+// 구독하기 : render 함수가 스토어의 상태가 바뀔 때마다 호출되도록.
+// subscribe : 스토어 내장 함수
+store.subscribe(render);
