@@ -14,7 +14,7 @@ const DECREASE = "DECREASE";
 // 액션 생성 함수
 const toggleSwitch = () => ({ type: TOGGLE_SWITCH });
 const increase = (difference) => ({ type: INCREASE, difference });
-const decrease = () => ({ tyep: DECREASE });
+const decrease = () => ({ type: DECREASE });
 
 // 초기값 설정
 const initialState = {
@@ -24,7 +24,8 @@ const initialState = {
 
 // 리듀서 함수 정의
 function reducer(state = initialState, action) {
-  switch (action.tyep) {
+  console.log("::::", action.type);
+  switch (action.type) {
     case TOGGLE_SWITCH:
       return {
         ...state, //불변성 유지
@@ -67,3 +68,27 @@ render();
 // 구독하기 : render 함수가 스토어의 상태가 바뀔 때마다 호출되도록.
 // subscribe : 스토어 내장 함수
 store.subscribe(render);
+
+// 액션 발생 : dispatch
+divToggle.onClick = () => {
+  store.dispatch(toggleSwitch());
+};
+
+btnIncrease.onclick = () => {
+  store.dispatch(increase(1));
+};
+
+btnDecrease.addEventListener("click", function () {
+  console.log("add1");
+});
+btnDecrease.addEventListener("click", function () {
+  console.log("add2");
+});
+btnDecrease.onclick = () => {
+  console.log("dispatch1");
+  store.dispatch(decrease());
+};
+btnDecrease.onclick = () => {
+  console.log("dispatch2");
+  store.dispatch(decrease());
+};
