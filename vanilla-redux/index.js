@@ -74,6 +74,10 @@ render();
 // subscribe : 스토어 내장 함수
 store.subscribe(render);
 
+// unsubscribe
+const unsubscribe = store.subscribe(render);
+// unsubscribe();
+
 // 액션 발생 : dispatch
 divToggle.onclick = () => {
   store.dispatch(toggleSwitch());
