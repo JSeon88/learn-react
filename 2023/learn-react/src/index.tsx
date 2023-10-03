@@ -5,7 +5,8 @@ import reportWebVitals from "./reportWebVitals";
 import Hello from "./components/Hello";
 // import ContextSample from "./components/ContextSample";
 // import UseStateSample from "./components/UseStateSample";
-import UseReducerSample from "./components/UseReducerSample";
+// import UseReducerSample from "./components/UseReducerSample";
+import UseCallbackSample from "./components/UseCallbackSample";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -17,7 +18,8 @@ root.render(
     {/* <App /> */}
     <Hello />
     {/* <UseStateSample initialValue={0} /> */}
-    <UseReducerSample initialValue={0} />
+    {/* <UseReducerSample initialValue={0} /> */}
+    <UseCallbackSample />
   </React.StrictMode>
 );
 
