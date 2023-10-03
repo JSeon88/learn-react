@@ -6,7 +6,8 @@ import Hello from "./components/Hello";
 // import ContextSample from "./components/ContextSample";
 // import UseStateSample from "./components/state/UseStateSample";
 // import UseReducerSample from "./components/state/UseReducerSample";
-import UseCallbackSample from "./components/memorization/UseCallbackSample";
+// import UseCallbackSample from "./components/memorization/UseCallbackSample";
+import UseMemoSample from "./components/memorization/UseMemoSample";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -19,7 +20,8 @@ root.render(
     <Hello />
     {/* <UseStateSample initialValue={0} /> */}
     {/* <UseReducerSample initialValue={0} /> */}
-    <UseCallbackSample />
+    {/* <UseCallbackSample /> */}
+    <UseMemoSample />
   </React.StrictMode>
 );
 
