@@ -4,7 +4,8 @@ import "./index.css";
 import reportWebVitals from "./reportWebVitals";
 import Hello from "./components/Hello";
 // import ContextSample from "./components/ContextSample";
-import UseStateSample from "./components/UseStateSample";
+// import UseStateSample from "./components/UseStateSample";
+import UseReducerSample from "./components/UseReducerSample";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -15,7 +16,8 @@ root.render(
     {/* App은 src/App.tsx로부터 임포트한 것을 사용 */}
     {/* <App /> */}
     <Hello />
-    <UseStateSample initialValue={0} />
+    {/* <UseStateSample initialValue={0} /> */}
+    <UseReducerSample initialValue={0} />
   </React.StrictMode>
 );
 
