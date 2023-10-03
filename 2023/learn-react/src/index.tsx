@@ -4,9 +4,9 @@ import "./index.css";
 import reportWebVitals from "./reportWebVitals";
 import Hello from "./components/Hello";
 // import ContextSample from "./components/ContextSample";
-// import UseStateSample from "./components/UseStateSample";
-// import UseReducerSample from "./components/UseReducerSample";
-import UseCallbackSample from "./components/UseCallbackSample";
+// import UseStateSample from "./components/state/UseStateSample";
+// import UseReducerSample from "./components/state/UseReducerSample";
+import UseCallbackSample from "./components/memorization/UseCallbackSample";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
