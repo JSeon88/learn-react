@@ -3,7 +3,8 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import reportWebVitals from "./reportWebVitals";
 import Hello from "./components/Hello";
-import UseContextSample from "./components/additional-action-hook/UseContextSample";
+// import UseContextSample from "./components/additional-action-hook/UseContextSample";
+import UseRefSample from "./components/ref/UseRefSample";
 // import ContextSample from "./components/ContextSample";
 // import UseStateSample from "./components/state/UseStateSample";
 // import UseReducerSample from "./components/state/UseReducerSample";
@@ -27,7 +28,8 @@ root.render(
     {/* <UseMemoSample /> */}
     {/* <UseEffectSample /> */}
     {/* <UseLayoutEffectSample /> */}
-    <UseContextSample />
+    {/* <UseContextSample /> */}
+    <UseRefSample />
   </React.StrictMode>
 );
 
