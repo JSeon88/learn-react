@@ -3,14 +3,14 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import reportWebVitals from "./reportWebVitals";
 import Hello from "./components/Hello";
+import UseContextSample from "./components/additional-action-hook/UseContextSample";
 // import ContextSample from "./components/ContextSample";
 // import UseStateSample from "./components/state/UseStateSample";
 // import UseReducerSample from "./components/state/UseReducerSample";
 // import UseCallbackSample from "./components/memorization/UseCallbackSample";
 // import UseMemoSample from "./components/memorization/UseMemoSample";
-// import UseEffectSample from "./components/additional-action-hook/useEffectSample";
-// import UseLayoutEffectSample from "./components/additional-action-hook/useLayoutEffectSample";
-import UseContextSample from "./components/additional-action-hook/useContextSample";
+// import UseEffectSample from "./components/additional-action-hook/UseEffectSample";
+// import UseLayoutEffectSample from "./components/additional-action-hook/UseLayoutEffectSample";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
