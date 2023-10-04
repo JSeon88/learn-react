@@ -7,7 +7,8 @@ import Hello from "./components/Hello";
 // import UseStateSample from "./components/state/UseStateSample";
 // import UseReducerSample from "./components/state/UseReducerSample";
 // import UseCallbackSample from "./components/memorization/UseCallbackSample";
-import UseMemoSample from "./components/memorization/UseMemoSample";
+// import UseMemoSample from "./components/memorization/UseMemoSample";
+import UseEffectSample from "./components/additional-action-hook/useEffectSample";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -21,7 +22,8 @@ root.render(
     {/* <UseStateSample initialValue={0} /> */}
     {/* <UseReducerSample initialValue={0} /> */}
     {/* <UseCallbackSample /> */}
-    <UseMemoSample />
+    {/* <UseMemoSample /> */}
+    <UseEffectSample />
   </React.StrictMode>
 );
 
