@@ -9,7 +9,8 @@ import Hello from "./components/Hello";
 // import UseCallbackSample from "./components/memorization/UseCallbackSample";
 // import UseMemoSample from "./components/memorization/UseMemoSample";
 // import UseEffectSample from "./components/additional-action-hook/useEffectSample";
-import UseLayoutEffectSample from "./components/additional-action-hook/useLayoutEffectSample";
+// import UseLayoutEffectSample from "./components/additional-action-hook/useLayoutEffectSample";
+import UseContextSample from "./components/additional-action-hook/useContextSample";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -25,7 +26,8 @@ root.render(
     {/* <UseCallbackSample /> */}
     {/* <UseMemoSample /> */}
     {/* <UseEffectSample /> */}
-    <UseLayoutEffectSample />
+    {/* <UseLayoutEffectSample /> */}
+    <UseContextSample />
   </React.StrictMode>
 );
 

@@ -6,6 +6,7 @@ const TitleContext = React.createContext("");
 const Title = () => {
   // Consumer를 사용해, Context 값을 참조
   return (
+    // useContext를 사용하면 Consumer를 사용안해도 됨
     <TitleContext.Consumer>
       {/* Consumer 바로 아래 함수를 두고, Context 값을 참조 */}
       {(title) => {
