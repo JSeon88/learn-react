@@ -8,7 +8,8 @@ import Hello from "./components/Hello";
 // import UseReducerSample from "./components/state/UseReducerSample";
 // import UseCallbackSample from "./components/memorization/UseCallbackSample";
 // import UseMemoSample from "./components/memorization/UseMemoSample";
-import UseEffectSample from "./components/additional-action-hook/useEffectSample";
+// import UseEffectSample from "./components/additional-action-hook/useEffectSample";
+import UseLayoutEffectSample from "./components/additional-action-hook/useLayoutEffectSample";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -23,7 +24,8 @@ root.render(
     {/* <UseReducerSample initialValue={0} /> */}
     {/* <UseCallbackSample /> */}
     {/* <UseMemoSample /> */}
-    <UseEffectSample />
+    {/* <UseEffectSample /> */}
+    <UseLayoutEffectSample />
   </React.StrictMode>
 );
 
