@@ -4,7 +4,8 @@ import "./index.css";
 import reportWebVitals from "./reportWebVitals";
 import Hello from "./components/Hello";
 // import UseContextSample from "./components/additional-action-hook/UseContextSample";
-import UseRefSample from "./components/ref/UseRefSample";
+// import UseRefSample from "./components/ref/UseRefSample";
+import UseCustomSample from "./components/UseCustomSample";
 // import ContextSample from "./components/ContextSample";
 // import UseStateSample from "./components/state/UseStateSample";
 // import UseReducerSample from "./components/state/UseReducerSample";
@@ -29,7 +30,8 @@ root.render(
     {/* <UseEffectSample /> */}
     {/* <UseLayoutEffectSample /> */}
     {/* <UseContextSample /> */}
-    <UseRefSample />
+    {/* <UseRefSample /> */}
+    <UseCustomSample />
   </React.StrictMode>
 );
 
