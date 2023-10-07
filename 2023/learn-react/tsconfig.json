@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    "target": "es5", // 타입스크립트가 컴파일을 수행할 때 어떤 버전의 ECMAScript로 출력할것인지 설정
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "noFallthroughCasesInSwitch": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "jsx": "react-jsx",
+    "strictNullChecks": true, // null, undefined 엄격 체크
+    "noImplicitAny": true // any 타입 사용 제한
+  },
+  "include": ["src"]
+}
