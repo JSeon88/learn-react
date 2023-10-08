@@ -1,12 +1,16 @@
-const Controller = () => {
+type Props = {
+  handlerCount: (value: number) => void;
+};
+
+const Controller: React.FC<Props> = ({ handlerCount }) => {
   return (
     <div>
-      <button>-1</button>
-      <button>-10</button>
-      <button>-100</button>
-      <button>+100</button>
-      <button>+10</button>
-      <button>+1</button>
+      <button onClick={() => handlerCount(-1)}>-1</button>
+      <button onClick={() => handlerCount(-10)}>-10</button>
+      <button onClick={() => handlerCount(-100)}>-100</button>
+      <button onClick={() => handlerCount(100)}>+100</button>
+      <button onClick={() => handlerCount(10)}>+10</button>
+      <button onClick={() => handlerCount(1)}>+1</button>
     </div>
   );
 };
