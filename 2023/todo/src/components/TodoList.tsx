@@ -1,7 +1,11 @@
-import React from "react";
+import { Todo } from "../types/todo";
 import TodoItem from "./TodoItem";
 
-const TodoList = () => {
+type Props = {
+  todo: Todo[];
+};
+
+const TodoList: React.FC<Props> = ({ todo }) => {
   return (
     <div className="TodoList">
       <h4>Todo List</h4>
@@ -11,9 +15,9 @@ const TodoList = () => {
         placeholder="검색어를 입력하세요"
       ></input>
       <div className="list_wrapper">
-        <TodoItem />
-        <TodoItem />
-        <TodoItem />
+        {todo.map((it) => (
+          <TodoItem key={it.id} {...it} />
+        ))}
       </div>
     </div>
   );
