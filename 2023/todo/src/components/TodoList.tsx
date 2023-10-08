@@ -4,9 +4,10 @@ import TodoItem from "./TodoItem";
 
 type Props = {
   todo: Todo[];
+  onUpdate: (id: number) => void;
 };
 
-const TodoList: React.FC<Props> = ({ todo }) => {
+const TodoList: React.FC<Props> = ({ todo, onUpdate }) => {
   const [search, setSearch] = useState("");
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearch(e.target.value);
@@ -32,7 +33,7 @@ const TodoList: React.FC<Props> = ({ todo }) => {
       ></input>
       <div className="list_wrapper">
         {getSearchResult().map((it) => (
-          <TodoItem key={it.id} {...it} />
+          <TodoItem key={it.id} todo={{ ...it }} onUpdate={onUpdate} />
         ))}
       </div>
     </div>

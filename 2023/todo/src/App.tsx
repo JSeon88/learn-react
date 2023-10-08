@@ -3,6 +3,7 @@ import "./App.css";
 import Header from "./components/Header";
 import TodoEditor from "./components/TodoEditor";
 import TodoList from "./components/TodoList";
+import { Todo } from "./types/todo";
 
 const mockTodo = [
   {
@@ -41,11 +42,19 @@ function App() {
     idRef.current += 1;
   };
 
+  const onUpdate = (id: number) => {
+    setTodo(
+      todo.map((it: Todo) =>
+        id === it.id ? { ...it, isDone: !it.isDone } : it
+      )
+    );
+  };
+
   return (
     <div className="App">
       <Header />
       <TodoEditor onCreate={onCreate} />
-      <TodoList todo={todo} />
+      <TodoList todo={todo} onUpdate={onUpdate} />
     </div>
   );
 }
