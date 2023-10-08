@@ -3,12 +3,17 @@ import { Todo } from "../types/todo";
 type Props = {
   todo: Todo;
   onUpdate: (id: number) => void;
+  onDelete: (id: number) => void;
 };
 
-const TodoItem: React.FC<Props> = ({ todo, onUpdate }) => {
+const TodoItem: React.FC<Props> = ({ todo, onUpdate, onDelete }) => {
   const { id, isDone, content, createdDate } = todo;
   const onChangeCheckbox = () => {
     onUpdate(id);
+  };
+
+  const onClickDelete = () => {
+    onDelete(id);
   };
 
   return (
@@ -21,7 +26,7 @@ const TodoItem: React.FC<Props> = ({ todo, onUpdate }) => {
         {new Date(createdDate).toLocaleDateString()}
       </div>
       <div className="btn_col">
-        <button>삭제</button>
+        <button onClick={onClickDelete}>삭제</button>
       </div>
     </div>
   );

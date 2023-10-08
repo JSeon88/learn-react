@@ -5,9 +5,10 @@ import TodoItem from "./TodoItem";
 type Props = {
   todo: Todo[];
   onUpdate: (id: number) => void;
+  onDelete: (id: number) => void;
 };
 
-const TodoList: React.FC<Props> = ({ todo, onUpdate }) => {
+const TodoList: React.FC<Props> = ({ todo, onUpdate, onDelete }) => {
   const [search, setSearch] = useState("");
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearch(e.target.value);
@@ -33,7 +34,12 @@ const TodoList: React.FC<Props> = ({ todo, onUpdate }) => {
       ></input>
       <div className="list_wrapper">
         {getSearchResult().map((it) => (
-          <TodoItem key={it.id} todo={{ ...it }} onUpdate={onUpdate} />
+          <TodoItem
+            key={it.id}
+            todo={{ ...it }}
+            onUpdate={onUpdate}
+            onDelete={onDelete}
+          />
         ))}
       </div>
     </div>
