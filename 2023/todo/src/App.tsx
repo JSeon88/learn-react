@@ -4,6 +4,7 @@ import Header from "./components/Header";
 import TodoEditor from "./components/TodoEditor";
 import TodoList from "./components/TodoList";
 import { Todo } from "./types/todo";
+import TestReducer from "./components/TestReducer";
 
 const mockTodo = [
   {
@@ -56,6 +57,7 @@ function App() {
 
   return (
     <div className="App">
+      <TestReducer />
       <Header />
       <TodoEditor onCreate={onCreate} />
       <TodoList todo={todo} onUpdate={onUpdate} onDelete={onDelete} />
