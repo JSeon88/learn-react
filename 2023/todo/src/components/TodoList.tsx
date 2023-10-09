@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { Todo } from "../types/todo";
 import TodoItem from "./TodoItem";
 
@@ -22,9 +22,34 @@ const TodoList: React.FC<Props> = ({ todo, onUpdate, onDelete }) => {
         );
   };
 
+  const analyzeTodo = useMemo((): AnalyzeTodo => {
+    const totalCount = todo.length;
+    console.log("analyzeTodo 함수 호출");
+    const doneCount = todo.filter((it) => it.isDone).length;
+    const notDoneCount = totalCount - doneCount;
+    return {
+      totalCount,
+      doneCount,
+      notDoneCount,
+    };
+  }, [todo]);
+
+  type AnalyzeTodo = {
+    totalCount: number;
+    doneCount: number;
+    notDoneCount: number;
+  };
+
+  const { totalCount, doneCount, notDoneCount }: AnalyzeTodo = analyzeTodo;
+
   return (
     <div className="TodoList">
       <h4>Todo List</h4>
+      <div>
+        <div>총 개수: {totalCount}</div>
+        <div>완료된 할 일: {doneCount}</div>
+        <div>아직 완료하지 못한 할 일: {notDoneCount}</div>
+      </div>
       <input
         className="search_bar"
         type="text"
