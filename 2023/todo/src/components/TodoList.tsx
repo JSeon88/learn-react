@@ -1,6 +1,7 @@
-import { useMemo, useState } from "react";
+import { useContext, useMemo, useState } from "react";
 import { Todo } from "../types/todo";
 import TodoItem from "./TodoItem";
+import { TodoContext } from "../App";
 
 type Props = {
   todo: Todo[];
@@ -8,7 +9,9 @@ type Props = {
   onDelete: (id: number) => void;
 };
 
-const TodoList: React.FC<Props> = ({ todo, onUpdate, onDelete }) => {
+const TodoList = () => {
+  const { todo }: Props = useContext(TodoContext);
+
   const [search, setSearch] = useState("");
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearch(e.target.value);
@@ -59,12 +62,7 @@ const TodoList: React.FC<Props> = ({ todo, onUpdate, onDelete }) => {
       ></input>
       <div className="list_wrapper">
         {getSearchResult().map((it) => (
-          <TodoItem
-            key={it.id}
-            todo={it}
-            onUpdate={onUpdate}
-            onDelete={onDelete}
-          />
+          <TodoItem key={it.id} todo={it} />
         ))}
       </div>
     </div>

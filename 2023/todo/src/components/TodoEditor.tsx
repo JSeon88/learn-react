@@ -1,10 +1,9 @@
-import { useRef, useState } from "react";
+import { useContext, useRef, useState } from "react";
+import { TodoContext } from "../App";
 
-type Props = {
-  onCreate: (content: string) => void;
-};
+const TodoEditor = () => {
+  const { onCreate } = useContext(TodoContext);
 
-const TodoEditor: React.FC<Props> = ({ onCreate }) => {
   const [content, setContent] = useState("");
   const inputRef = useRef<HTMLInputElement | null>(null);
 

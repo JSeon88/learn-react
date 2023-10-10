@@ -1,4 +1,4 @@
-import { useCallback, useReducer, useRef } from "react";
+import React, { useCallback, useReducer, useRef } from "react";
 import "./App.css";
 import Header from "./components/Header";
 import TodoEditor from "./components/TodoEditor";
@@ -50,6 +50,20 @@ const reducer = (state: Todo[], action: Action) => {
   }
 };
 
+type ContextType = {
+  todo: Todo[];
+  onCreate: (content: string) => void;
+  onUpdate: (id: number) => void;
+  onDelete: (id: number) => void;
+};
+
+export const TodoContext = React.createContext<ContextType>({
+  todo: [],
+  onCreate: () => {},
+  onUpdate: () => {},
+  onDelete: () => {},
+});
+
 function App() {
   const [todo, dispatch] = useReducer(reducer, mockTodo);
 
@@ -85,8 +99,10 @@ function App() {
   return (
     <div className="App">
       <Header />
-      <TodoEditor onCreate={onCreate} />
-      <TodoList todo={todo} onUpdate={onUpdate} onDelete={onDelete} />
+      <TodoContext.Provider value={{ todo, onCreate, onUpdate, onDelete }}>
+        <TodoEditor />
+        <TodoList />
+      </TodoContext.Provider>
     </div>
   );
 }

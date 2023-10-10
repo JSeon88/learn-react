@@ -1,14 +1,15 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Todo } from "../types/todo";
+import { TodoContext } from "../App";
 
 type Props = {
   todo: Todo;
-  onUpdate: (id: number) => void;
-  onDelete: (id: number) => void;
 };
 
-const TodoItem: React.FC<Props> = React.memo(({ todo, onUpdate, onDelete }) => {
+const TodoItem: React.FC<Props> = React.memo(({ todo }) => {
   console.log("TodoItem 업데이트");
+  const { onUpdate, onDelete } = useContext(TodoContext);
+
   const { id, isDone, content, createdDate } = todo;
   const onChangeCheckbox = () => {
     onUpdate(id);
