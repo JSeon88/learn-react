@@ -61,7 +61,7 @@ const TodoList: React.FC<Props> = ({ todo, onUpdate, onDelete }) => {
         {getSearchResult().map((it) => (
           <TodoItem
             key={it.id}
-            todo={{ ...it }}
+            todo={it}
             onUpdate={onUpdate}
             onDelete={onDelete}
           />

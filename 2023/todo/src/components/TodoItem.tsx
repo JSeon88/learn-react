@@ -1,3 +1,4 @@
+import React from "react";
 import { Todo } from "../types/todo";
 
 type Props = {
@@ -6,7 +7,8 @@ type Props = {
   onDelete: (id: number) => void;
 };
 
-const TodoItem: React.FC<Props> = ({ todo, onUpdate, onDelete }) => {
+const TodoItem: React.FC<Props> = React.memo(({ todo, onUpdate, onDelete }) => {
+  console.log("TodoItem 업데이트");
   const { id, isDone, content, createdDate } = todo;
   const onChangeCheckbox = () => {
     onUpdate(id);
@@ -30,6 +32,6 @@ const TodoItem: React.FC<Props> = ({ todo, onUpdate, onDelete }) => {
       </div>
     </div>
   );
-};
+});
 
 export default TodoItem;

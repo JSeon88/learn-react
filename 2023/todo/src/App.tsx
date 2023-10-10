@@ -1,4 +1,4 @@
-import { useReducer, useRef } from "react";
+import { useCallback, useReducer, useRef } from "react";
 import "./App.css";
 import Header from "./components/Header";
 import TodoEditor from "./components/TodoEditor";
@@ -55,7 +55,7 @@ function App() {
 
   const idRef = useRef(3);
 
-  const onCreate = (content: string) => {
+  const onCreate = useCallback((content: string) => {
     dispatch({
       type: "CREATE",
       newItem: {
@@ -66,21 +66,21 @@ function App() {
       },
     });
     idRef.current += 1;
-  };
+  }, []);
 
-  const onUpdate = (id: number) => {
+  const onUpdate = useCallback((id: number) => {
     dispatch({
       type: "UPDATE",
       targetId: id,
     });
-  };
+  }, []);
 
-  const onDelete = (id: number) => {
+  const onDelete = useCallback((id: number) => {
     dispatch({
       type: "DELETE",
       targetId: id,
     });
-  };
+  }, []);
 
   return (
     <div className="App">
