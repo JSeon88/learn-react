@@ -7,10 +7,14 @@ const Button = ({
   onClick,
 }: {
   text: string;
-  type: string;
-  onClick: () => void;
+  type?: string;
+  onClick?: () => void;
 }) => {
-  const btn_type = ["positive", "negative"].includes(type) ? type : "default";
+  let btn_type = "default";
+  if (type) {
+    btn_type = ["positive", "negative"].includes(type) ? type : btn_type;
+  }
+
   return (
     <button
       className={["Button", `Button_${btn_type}`].join(" ")}
