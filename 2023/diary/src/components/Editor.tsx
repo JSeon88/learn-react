@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import "./Editor.css";
 import { emotionList, getFormattedDate } from "../util";
 import Button from "./Button";
@@ -11,13 +11,27 @@ type DiaryType = {
   content: string;
 };
 
-const Editor = ({ onSubmit }: { onSubmit: (state: DiaryType) => void }) => {
+const Editor = ({
+  initData,
+  onSubmit,
+}: {
+  initData: DiaryType;
+  onSubmit: (state: DiaryType) => void;
+}) => {
   const [state, setState] = useState({
     date: getFormattedDate(new Date()),
     emotionId: 3,
     content: "",
   });
   const navigator = useNavigate();
+
+  useEffect(() => {
+    if (initData) {
+      setState({
+        ...initData,
+      });
+    }
+  }, [initData]);
 
   const handleChangeDate = (e: React.ChangeEvent<HTMLInputElement>) => {
     setState({
