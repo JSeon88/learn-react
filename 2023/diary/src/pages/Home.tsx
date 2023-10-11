@@ -1,11 +1,18 @@
 import React from "react";
-import { useSearchParams } from "react-router-dom";
+import Button from "../components/Button";
 
 const Home = () => {
-  // 쿼리 스트링으로 값 불러오기
-  const [searchParams, setSearchParams] = useSearchParams();
-  console.log(searchParams.get("sort"));
-  return <div>Home</div>;
+  return (
+    <div>
+      <Button
+        text={"버튼 텍스트"}
+        type={"positive"}
+        onClick={() => {
+          alert("hi");
+        }}
+      />
+    </div>
+  );
 };
 
 export default Home;
