@@ -1,15 +1,10 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./Editor.css";
 import { emotionList, getFormattedDate } from "../util";
 import Button from "./Button";
 import { useNavigate } from "react-router-dom";
 import EmotionItem from "./EmotionItem";
-
-type DiaryType = {
-  date: string;
-  emotionId: number;
-  content: string;
-};
+import { DiaryType } from "../types";
 
 const Editor = ({
   initData,
