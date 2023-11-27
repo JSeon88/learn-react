@@ -59,6 +59,8 @@ body {
 }
 a {
   text-decoration:none;
+  // a 링크의 색깔을 부모로부터 받아오게
+  color:inherit;
 }
 `;
 
