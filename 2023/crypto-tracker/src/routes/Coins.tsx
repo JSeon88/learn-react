@@ -22,8 +22,8 @@ const Coin = styled.li`
   a {
     padding: 20px;
     transition: color 0.2s ease-in;
-    // 클릭 공간을 블록단위 전체로.
-    display: block;
+    display: flex;
+    align-items: center;
   }
   &:hover {
     a {
@@ -38,6 +38,11 @@ const Title = styled.h1`
 const Loading = styled.span`
   text-align: center;
   display: block;
+`;
+const Img = styled.img`
+  width: 30px;
+  height: 30px;
+  margin-right: 10px;
 `;
 
 type CoinType = {
@@ -67,13 +72,21 @@ function Coins() {
       <Header>
         <Title>코인</Title>
       </Header>
+
       <CoinList>
         {loading ? (
           <Loading>Loading...</Loading>
         ) : (
           coins.map((coin) => (
             <Coin key={coin.id}>
-              <Link to={`/${coin.id}`}>{coin.name} &rarr;</Link>
+              <Link
+                to={{ pathname: `/${coin.id}`, state: { name: coin.name } }}
+              >
+                <Img
+                  src={`https://cryptocurrencyliveprices.com/img/${coin.id}.png`}
+                />
+                {coin.name} &rarr;
+              </Link>
             </Coin>
           ))
         )}
