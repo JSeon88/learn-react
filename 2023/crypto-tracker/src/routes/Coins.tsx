@@ -59,30 +59,30 @@ type CoinType = {
 function Coins() {
   const { isLoading, data } = useQuery<CoinType[]>("coins", fetchCoins);
   return (
-    <Container>
-      <Header>
-        <Title>코인</Title>
-      </Header>
+    <>
+      <Container>
+        <Header>
+          <Title>코인</Title>
+        </Header>
 
-      <CoinList>
-        {isLoading ? (
-          <Loading>Loading...</Loading>
-        ) : (
-          data?.slice(0, 100).map((coin) => (
-            <Coin key={coin.id}>
-              <Link
-                to={{ pathname: `/${coin.id}`, state: { name: coin.name } }}
-              >
-                <Img
-                  src={`https://cryptocurrencyliveprices.com/img/${coin.id}.png`}
-                />
-                {coin.name} &rarr;
-              </Link>
-            </Coin>
-          ))
-        )}
-      </CoinList>
-    </Container>
+        <CoinList>
+          {isLoading ? (
+            <Loading>Loading...</Loading>
+          ) : (
+            data?.slice(0, 100).map((coin) => (
+              <Coin key={coin.id}>
+                <Link to={`/${coin.id}`} state={{ name: coin.name }}>
+                  <Img
+                    src={`https://static.coinpaprika.com/coin/${coin.id}/logo.png`}
+                  />
+                  {coin.name} &rarr;
+                </Link>
+              </Coin>
+            ))
+          )}
+        </CoinList>
+      </Container>
+    </>
   );
 }
 
