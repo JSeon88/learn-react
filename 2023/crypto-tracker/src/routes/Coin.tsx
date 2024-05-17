@@ -4,6 +4,7 @@ import styled from "styled-components";
 import { useQuery } from "react-query";
 import { fetchCoinInfo, fetchTickersInfo } from "../api";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 
 const Title = styled.h1`
   font-size: 48px;
@@ -148,22 +149,29 @@ function Coin() {
     () => fetchCoinInfo(String(coinId))
   );
   const { isLoading: tickersLoading, data: tickersData } =
-    useQuery<TickersData>(["tickers", coinId], () =>
-      fetchTickersInfo(String(coinId))
+    useQuery<TickersData>(
+      ["tickers", coinId],
+      () => fetchTickersInfo(String(coinId)),
+      {
+        refetchInterval: 1000,
+      }
     );
 
   const loading = infoLoading || tickersLoading;
 
+  const pageTitle = routeState
+    ? routeState.name
+    : loading
+    ? "Loading..."
+    : infoData?.name;
+
   return (
     <Container>
+      <Helmet>
+        <title>{pageTitle}</title>
+      </Helmet>
       <Header>
-        <Title>
-          {routeState
-            ? routeState.name
-            : loading
-            ? "Loading..."
-            : infoData?.name}
-        </Title>
+        <Title>{pageTitle}</Title>
       </Header>
       {loading ? (
         <Loading>Loading...</Loading>
