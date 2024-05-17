@@ -15,3 +15,10 @@ export const fetchTickersInfo = (coinId: string) => {
     res.json()
   );
 };
+
+/** 코인 히스토리 - 차트 */
+export const fetchCoinHistory = (coinId: string) => {
+  return fetch(
+    `https://ohlcv-api.nomadcoders.workers.dev?coinId=${coinId}`
+  ).then((res) => res.json());
+};
