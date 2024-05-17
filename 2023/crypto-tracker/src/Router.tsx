@@ -1,21 +1,17 @@
 import { createBrowserRouter } from "react-router-dom";
 
 import { Suspense, lazy } from "react";
+import App from "./App";
 
-const App = lazy(() => import("./App"));
-const Coin = lazy(() => import("./routes/Coin"));
-const Coins = lazy(() => import("./routes/Coins"));
-const Price = lazy(() => import("./routes/Price"));
-const Chart = lazy(() => import("./routes/Chart"));
+const Coin = lazy(() => import("./pages/Coin"));
+const Coins = lazy(() => import("./pages/Coins"));
+const Price = lazy(() => import("./pages/Price"));
+const Chart = lazy(() => import("./pages/Chart"));
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: (
-      <Suspense>
-        <App />
-      </Suspense>
-    ),
+    element: <App />,
     children: [
       {
         path: "",
