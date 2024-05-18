@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { fetchCoins } from "../api";
 import { Helmet } from "react-helmet-async";
+import { useSetRecoilState } from "recoil";
+import { isDarkAtom } from "../atoms";
 
 const Container = styled.div`
   padding: 0px 20px;
@@ -17,8 +19,9 @@ const Header = styled.header`
 `;
 const CoinList = styled.ul``;
 const Coin = styled.li`
-  background-color: white;
-  color: ${(props) => props.theme.bgColor};
+  background-color: ${(props) => props.theme.cardBgColor};
+  color: ${(props) => props.theme.textColor};
+  border: 1px solid white;
   margin-bottom: 10px;
   border-radius: 15px;
   a {
@@ -59,6 +62,10 @@ type CoinType = {
 
 function Coins() {
   const { isLoading, data } = useQuery<CoinType[]>("coins", fetchCoins);
+  const setDarkModeAtom = useSetRecoilState(isDarkAtom);
+  const toggleDarkMode = () => {
+    setDarkModeAtom((prev) => !prev);
+  };
   return (
     <>
       <Container>
@@ -67,6 +74,7 @@ function Coins() {
         </Helmet>
         <Header>
           <Title>코인</Title>
+          <button onClick={toggleDarkMode}>Toggle Dark Mode</button>
         </Header>
 
         <CoinList>
