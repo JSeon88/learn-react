@@ -1,6 +1,6 @@
 import { createGlobalStyle } from "styled-components";
-// import ToDoList from "./ToDoList";
-import FormExample from "./FormExample";
+import ToDoList from "./ToDoList";
+// import FormExample from "./FormExample";
 
 const GlobalStyle = createGlobalStyle`
 html, body, div, span, applet, object, iframe,
@@ -68,8 +68,8 @@ function App() {
   return (
     <>
       <GlobalStyle />
-      {/* <ToDoList /> */}
-      <FormExample />
+      <ToDoList />
+      {/* <FormExample /> */}
     </>
   );
 }

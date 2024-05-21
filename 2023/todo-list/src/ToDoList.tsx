@@ -1,32 +1,55 @@
-import React, { useState } from "react";
+import { useForm } from "react-hook-form";
+import { atom, useRecoilState } from "recoil";
+
+interface IForm {
+  toDo: string;
+}
+interface IToDo {
+  id: number;
+  text: string;
+  category: "TO_DO" | "DOING" | "DONE";
+}
+
+const toDoState = atom<IToDo[]>({
+  key: "toDo",
+  default: [],
+});
 
 const ToDoList = () => {
-  const [todo, setTodo] = useState("");
+  const { register, handleSubmit, setValue } = useForm<IForm>();
+  const [toDos, setToDos] = useRecoilState(toDoState);
 
-  const onChange = (event: React.FormEvent<HTMLInputElement>) => {
-    const {
-      currentTarget: { value },
-    } = event;
-    setTodo(value);
+  const handleAdd = ({ toDo }: IForm) => {
+    setToDos((oldVal) => [
+      { id: Date.now(), text: toDo, category: "TO_DO" },
+      ...oldVal,
+    ]);
+
+    setValue("toDo", "");
   };
-
-  const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    console.log(todo);
-  };
-
   return (
-    <div className="todo-list">
-      <form onSubmit={onSubmit}>
-        <input
-          type="text"
-          placeholder="Write a to do"
-          value={todo}
-          onChange={onChange}
-        />
-        <button>Add</button>
-      </form>
-    </div>
+    <>
+      <div className="todo">
+        <h1>ToDo List</h1>
+        <div>
+          <form onSubmit={handleSubmit(handleAdd)}>
+            <input
+              type="text"
+              placeholder="Write a to do"
+              {...register("toDo")}
+            />
+            <button>Add</button>
+          </form>
+        </div>
+      </div>
+      <div className="todo-list">
+        <ul>
+          {toDos.map((todo) => (
+            <li key={todo.id}>{todo.text}</li>
+          ))}
+        </ul>
+      </div>
+    </>
   );
 };
 export default ToDoList;
