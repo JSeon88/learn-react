@@ -1,4 +1,5 @@
 import { Draggable } from "@hello-pangea/dnd";
+import { memo } from "react";
 import styled from "styled-components";
 
 const Card = styled.div`
@@ -12,7 +13,7 @@ interface DraggableProps {
   todo: string;
   index: number;
 }
-const DraggableCard = ({ todo, index }: DraggableProps) => {
+const DraggableCard = memo(({ todo, index }: DraggableProps) => {
   return (
     // draggableId 와 key 값이 같아야 함.
     <Draggable key={todo} draggableId={todo} index={index}>
@@ -27,5 +28,6 @@ const DraggableCard = ({ todo, index }: DraggableProps) => {
       )}
     </Draggable>
   );
-};
+});
+
 export default DraggableCard;
