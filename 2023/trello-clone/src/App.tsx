@@ -1,6 +1,13 @@
 // react-beautiful-dnd 의 react18 호환을 위한 포크 버전
-import { DragDropContext, Draggable, Droppable } from "@hello-pangea/dnd";
+import {
+  DragDropContext,
+  Draggable,
+  DropResult,
+  Droppable,
+} from "@hello-pangea/dnd";
+import { useRecoilState } from "recoil";
 import styled from "styled-components";
+import { toDoState } from "./atom";
 
 const Wrapper = styled.div`
   display: flex;
@@ -31,20 +38,32 @@ const Card = styled.div`
   padding: 10px;
   margin-bottom: 10px;
   box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.25);
-  cursor: pointer;
 `;
 
-const toDos = ["a", "b", "c", "d", "e", "f"];
 function App() {
+  const [toDos, setToDos] = useRecoilState(toDoState);
+  const onDragEnd = ({ destination, source }: DropResult) => {
+    if (!destination) {
+      return;
+    }
+    const newToDos = [...toDos];
+    // 이동하는 자리 => 값 삭제
+    const [reorderedItem] = newToDos.splice(source.index, 1);
+    // 이동하고자 하는 자리에 => 값 삽입
+    newToDos.splice(destination.index, 0, reorderedItem);
+
+    setToDos(newToDos);
+  };
   return (
-    <DragDropContext onDragEnd={() => {}}>
+    <DragDropContext onDragEnd={onDragEnd}>
       <Wrapper>
         <Boards>
           <Droppable droppableId="one">
             {(provided) => (
               <Board ref={provided.innerRef} {...provided.droppableProps}>
                 {toDos.map((todo, index) => (
-                  <Draggable draggableId={todo} index={index}>
+                  // draggableId 와 key 값이 같아야 함.
+                  <Draggable key={todo} draggableId={todo} index={index}>
                     {(provided) => (
                       <Card
                         ref={provided.innerRef}

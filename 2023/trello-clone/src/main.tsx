@@ -4,12 +4,15 @@ import App from "./App.tsx";
 import { ThemeProvider } from "styled-components";
 import { darkTheme } from "./theme.ts";
 import GlobalStyle from "./GlobalStyle.tsx";
+import { RecoilRoot } from "recoil";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <ThemeProvider theme={darkTheme}>
-      <GlobalStyle />
-      <App />
-    </ThemeProvider>
+    <RecoilRoot>
+      <ThemeProvider theme={darkTheme}>
+        <GlobalStyle />
+        <App />
+      </ThemeProvider>
+    </RecoilRoot>
   </React.StrictMode>
 );
