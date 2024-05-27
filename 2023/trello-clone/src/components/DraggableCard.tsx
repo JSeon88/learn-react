@@ -12,13 +12,14 @@ const Card = styled.div<{ $isDragging: boolean }>`
     props.$isDragging ? "0 0 5px 0 rgba(0, 0, 0, 0.25)" : "none"};
 `;
 interface DraggableProps {
-  todo: string;
+  todoId: number;
+  todoText: string;
   index: number;
 }
-const DraggableCard = memo(({ todo, index }: DraggableProps) => {
+const DraggableCard = memo(({ todoId, todoText, index }: DraggableProps) => {
   return (
     // draggableId 와 key 값이 같아야 함.
-    <Draggable key={todo} draggableId={todo} index={index}>
+    <Draggable key={todoId} draggableId={todoId + ""} index={index}>
       {(provided, snapshot) => (
         <Card
           $isDragging={snapshot.isDragging}
@@ -26,7 +27,7 @@ const DraggableCard = memo(({ todo, index }: DraggableProps) => {
           {...provided.draggableProps}
           {...provided.dragHandleProps}
         >
-          {todo}
+          {todoText}
         </Card>
       )}
     </Draggable>
