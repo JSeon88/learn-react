@@ -7,6 +7,12 @@ const Wrapper = styled.div`
   min-height: 200px;
   background-color: ${(props) => props.theme.boardColor};
   border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+`;
+
+const Area = styled.div`
+  flex-grow: 1;
 `;
 
 const Title = styled.div`
@@ -27,12 +33,12 @@ const DraggableBoard = ({ toDos, boardId }: DraggableBoardProps) => {
       <Title>{boardId}</Title>
       <Droppable droppableId={boardId}>
         {(provided) => (
-          <div ref={provided.innerRef} {...provided.droppableProps}>
+          <Area ref={provided.innerRef} {...provided.droppableProps}>
             {toDos.map((todo, index) => (
               <DraggableCard key={index} todo={todo} index={index} />
             ))}
             {provided.placeholder}
-          </div>
+          </Area>
         )}
       </Droppable>
     </Wrapper>
