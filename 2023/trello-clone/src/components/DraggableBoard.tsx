@@ -10,9 +10,22 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
 `;
+interface AreaProps {
+  /** 드래그한 카드가 떠난 여부 */
+  $isDraggingFromThis: boolean;
+  /** 드래그한 카드가 오버되어있는 여부 */
+  $isDraggingOver: boolean;
+}
 
-const Area = styled.div`
+const Area = styled.div<AreaProps>`
+  background-color: ${(props) =>
+    props.$isDraggingOver
+      ? "#dfe6e9"
+      : props.$isDraggingFromThis
+      ? "#b2bec3"
+      : "transparent"};
   flex-grow: 1;
+  transition: background-color 0.3s ease-in-out;
 `;
 
 const Title = styled.div`
@@ -32,8 +45,13 @@ const DraggableBoard = ({ toDos, boardId }: DraggableBoardProps) => {
     <Wrapper>
       <Title>{boardId}</Title>
       <Droppable droppableId={boardId}>
-        {(provided) => (
-          <Area ref={provided.innerRef} {...provided.droppableProps}>
+        {(provided, snapshot) => (
+          <Area
+            $isDraggingOver={snapshot.isDraggingOver}
+            $isDraggingFromThis={Boolean(snapshot.draggingFromThisWith)}
+            ref={provided.innerRef}
+            {...provided.droppableProps}
+          >
             {toDos.map((todo, index) => (
               <DraggableCard key={index} todo={todo} index={index} />
             ))}
