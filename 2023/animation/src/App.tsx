@@ -2,6 +2,7 @@ import styled from "styled-components";
 import BasicAnimation from "./components/BasicAnimation";
 import Variants from "./components/Variants";
 import Gestures from "./components/Gestures";
+import Drag1 from "./components/Drag1";
 
 const Wrapper = styled.div`
   height: 100vh;
@@ -24,6 +25,7 @@ function App() {
         <BasicAnimation />
         <Variants />
         <Gestures />
+        <Drag1 />
       </Boards>
     </Wrapper>
   );
