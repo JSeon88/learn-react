@@ -4,6 +4,7 @@ import Variants from "./components/Variants";
 import Gestures from "./components/Gestures";
 import Drag1 from "./components/Drag1";
 import Drag2 from "./components/Drag2";
+import MotionValues from "./components/MotionValues";
 
 const Wrapper = styled.div`
   height: 100vh;
@@ -28,6 +29,7 @@ function App() {
         <Gestures />
         <Drag1 />
         <Drag2 />
+        <MotionValues />
       </Boards>
     </Wrapper>
   );
