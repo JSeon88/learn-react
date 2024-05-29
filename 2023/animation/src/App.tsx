@@ -6,6 +6,7 @@ import Drag1 from "./components/Drag1";
 import Drag2 from "./components/Drag2";
 import MotionValues from "./components/MotionValues";
 import Scroll from "./components/Scroll";
+import SvgPath from "./components/SvgPath";
 
 const Wrapper = styled.div`
   height: 120vh;
@@ -32,6 +33,7 @@ function App() {
         <Drag2 />
         <MotionValues />
         <Scroll />
+        <SvgPath />
       </Boards>
     </Wrapper>
   );
