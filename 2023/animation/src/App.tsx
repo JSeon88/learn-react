@@ -5,9 +5,10 @@ import Gestures from "./components/Gestures";
 import Drag1 from "./components/Drag1";
 import Drag2 from "./components/Drag2";
 import MotionValues from "./components/MotionValues";
+import Scroll from "./components/Scroll";
 
 const Wrapper = styled.div`
-  height: 100vh;
+  height: 120vh;
   width: 100vw;
   display: flex;
   justify-content: center;
@@ -30,6 +31,7 @@ function App() {
         <Drag1 />
         <Drag2 />
         <MotionValues />
+        <Scroll />
       </Boards>
     </Wrapper>
   );
