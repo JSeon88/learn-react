@@ -7,6 +7,7 @@ import Drag2 from "./components/Drag2";
 import MotionValues from "./components/MotionValues";
 import Scroll from "./components/Scroll";
 import SvgPath from "./components/SvgPath";
+import AnimatePresence1 from "./components/AnimatePresence1";
 
 const Wrapper = styled.div`
   height: 120vh;
@@ -34,6 +35,7 @@ function App() {
         <MotionValues />
         <Scroll />
         <SvgPath />
+        <AnimatePresence1 />
       </Boards>
     </Wrapper>
   );
