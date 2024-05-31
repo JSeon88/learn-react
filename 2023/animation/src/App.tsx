@@ -9,6 +9,7 @@ import Scroll from "./components/Scroll";
 import SvgPath from "./components/SvgPath";
 import AnimatePresence1 from "./components/AnimatePresence1";
 import Slider from "./components/Slider";
+import Layout1 from "./components/Layout1";
 
 const Wrapper = styled.div`
   height: 120vh;
@@ -45,6 +46,7 @@ function App() {
         <SpanColumn>
           <Slider />
         </SpanColumn>
+        <Layout1 />
       </Boards>
     </Wrapper>
   );
