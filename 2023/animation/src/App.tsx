@@ -10,6 +10,7 @@ import SvgPath from "./components/SvgPath";
 import AnimatePresence1 from "./components/AnimatePresence1";
 import Slider from "./components/Slider";
 import Layout1 from "./components/Layout1";
+import Layout2 from "./components/Layout2";
 
 const Wrapper = styled.div`
   height: 120vh;
@@ -26,8 +27,8 @@ const Boards = styled.div`
 `;
 
 /** 컬럼 3 만큼 병합 */
-const SpanColumn = styled.div`
-  grid-column: 1 / span 3;
+const SpanColumn = styled.div<{ start: number; span: number }>`
+  grid-column: ${(props) => props.start} / span ${(props) => props.span};
 `;
 
 function App() {
@@ -43,10 +44,13 @@ function App() {
         <Scroll />
         <SvgPath />
         <AnimatePresence1 />
-        <SpanColumn>
+        <SpanColumn start={1} span={3}>
           <Slider />
         </SpanColumn>
         <Layout1 />
+        <SpanColumn start={2} span={2}>
+          <Layout2 />
+        </SpanColumn>
       </Boards>
     </Wrapper>
   );
