@@ -8,6 +8,7 @@ import MotionValues from "./components/MotionValues";
 import Scroll from "./components/Scroll";
 import SvgPath from "./components/SvgPath";
 import AnimatePresence1 from "./components/AnimatePresence1";
+import Slider from "./components/Slider";
 
 const Wrapper = styled.div`
   height: 120vh;
@@ -23,6 +24,11 @@ const Boards = styled.div`
   grid-gap: 10px;
 `;
 
+/** 컬럼 3 만큼 병합 */
+const SpanColumn = styled.div`
+  grid-column: 1 / span 3;
+`;
+
 function App() {
   return (
     <Wrapper>
@@ -36,6 +42,9 @@ function App() {
         <Scroll />
         <SvgPath />
         <AnimatePresence1 />
+        <SpanColumn>
+          <Slider />
+        </SpanColumn>
       </Boards>
     </Wrapper>
   );
