@@ -13,6 +13,7 @@ const Wrapper = styled.div`
   gap: 10px;
   justify-content: center;
   align-items: center;
+  position: relative;
 `;
 
 const Box = styled(motion.div)`
@@ -20,6 +21,15 @@ const Box = styled(motion.div)`
   height: 60px;
   background-color: white;
   border-radius: 10px;
+  position: absolute;
+`;
+
+const Button = styled.button`
+  position: absolute;
+  bottom: 30px;
+  border-radius: 5px;
+  background-color: #ffb5b5;
+  border: none;
 `;
 
 const boxVariant = {
@@ -64,7 +74,7 @@ const AnimatePresence1 = () => {
             />
           ) : null}
         </AnimatePresence>
-        <button onClick={handleClick}>Click me</button>
+        <Button onClick={handleClick}>Click me</Button>
       </Wrapper>
     </>
   );
