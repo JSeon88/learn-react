@@ -42,26 +42,24 @@ const Overlay = styled(motion.div)`
 `;
 
 const Layout3 = () => {
-  const [isClick, setClick] = useState(false);
-  const handleClick = () => {
-    setClick(!isClick);
-  };
+  const [boxId, setBoxId] = useState<string | undefined>(undefined);
+
   return (
-    <Wrapper onClick={handleClick}>
+    <Wrapper>
       <Grid>
-        <Box layoutId="box1" />
-        <Box />
-        <Box />
-        <Box />
+        {["1", "2", "3", "4"].map((i) => (
+          <Box key={i} layoutId={i} onClick={() => setBoxId(i)} />
+        ))}
       </Grid>
       <AnimatePresence>
-        {isClick && (
+        {boxId && (
           <Overlay
+            onClick={() => setBoxId(undefined)}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
           >
-            <Box layoutId="box1" style={{ width: 400, height: 300 }} />
+            <Box layoutId={boxId} style={{ width: 400, height: 300 }} />
           </Overlay>
         )}
       </AnimatePresence>
