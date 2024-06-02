@@ -77,8 +77,14 @@ const Circle = styled(motion.div)`
 const Input = styled(motion.input)`
   transform-origin: right center;
   position: absolute;
-  left: -193px;
-  width: 190px;
+  right: 0px;
+  padding: 5px 10px;
+  padding-left: 40px;
+  z-index: -1;
+  color: white;
+  font-size: 16px;
+  background-color: transparent;
+  border: 1px solid ${(props) => props.theme.white.lighter};
 `;
 
 const LogoVariant = {
@@ -129,8 +135,12 @@ const Header = () => {
           </Items>
         </Col>
         <Col>
-          <Search onClick={handleSearch}>
+          <Search>
             <motion.svg
+              onClick={handleSearch}
+              animate={{ x: isSearch ? -185 : 0 }}
+              // 이걸 안주니 얘가 톡톡 튀네
+              transition={{ type: 'linear' }}
               fill="currentColor"
               viewBox="0 0 20 20"
               xmlns="http://www.w3.org/2000/svg"
@@ -143,6 +153,7 @@ const Header = () => {
             </motion.svg>
             <Input
               transition={{ type: 'linear' }}
+              initial={{ scaleX: 0 }}
               placeholder="Search for movie or tv show..."
               animate={{ scaleX: isSearch ? 1 : 0 }}
             />
