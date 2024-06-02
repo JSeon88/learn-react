@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion';
+import { motion, useAnimation } from 'framer-motion';
 import { useState } from 'react';
 import { Link, useMatch } from 'react-router-dom';
 import styled from 'styled-components';
@@ -104,7 +104,23 @@ const Header = () => {
   const tv = useMatch('/tv');
 
   const [isSearch, setIsSearch] = useState(false);
+  const inputAnimation = useAnimation();
+
   const handleSearch = () => {
+    /**
+     * animation 으로 직접 쓸 수도 있고
+     * useAnimation hook 을 사용하여 쓸 수도 있음.
+     */
+    if (isSearch) {
+      inputAnimation.start({
+        scaleX: 0,
+      });
+    } else {
+      inputAnimation.start({
+        scaleX: 1,
+      });
+    }
+
     setIsSearch((prev) => !prev);
   };
   return (
@@ -155,7 +171,9 @@ const Header = () => {
               transition={{ type: 'linear' }}
               initial={{ scaleX: 0 }}
               placeholder="Search for movie or tv show..."
-              animate={{ scaleX: isSearch ? 1 : 0 }}
+              // animate={{ scaleX: isSearch ? 1 : 0 }}
+              // 위에처럼 바로 정의할 수 있고 아래같이 정의할 수 있음. 아래의 경우는 hook을 사용한 경우
+              animate={inputAnimation}
             />
           </Search>
         </Col>

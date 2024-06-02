@@ -14,7 +14,6 @@ import Layout2 from "./components/Layout2";
 import Layout3 from "./components/Layout3";
 
 const Wrapper = styled.div`
-  height: 180vh;
   width: 100vw;
   display: flex;
   justify-content: center;
@@ -25,6 +24,7 @@ const Boards = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 10px;
+  padding: 50px;
 `;
 
 /** 컬럼 3 만큼 병합 */
