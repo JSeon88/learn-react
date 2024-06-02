@@ -57,7 +57,7 @@ const Search = styled.div`
   }
 `;
 
-const Circle = styled.div`
+const Circle = styled(motion.div)`
   width: 5px;
   height: 5px;
   border-radius: 50%;
@@ -104,11 +104,11 @@ const Header = () => {
           <Items>
             <Item>
               <Link to="/">Home</Link>
-              {home && <Circle />}
+              {home && <Circle layoutId="circle" />}
             </Item>
             <Item>
               <Link to="tv">Tv Shows</Link>
-              {tv && <Circle />}
+              {tv && <Circle layoutId="circle" />}
             </Item>
           </Items>
         </Col>
