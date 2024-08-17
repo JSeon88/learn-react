@@ -1,17 +1,15 @@
-import { motion, useAnimation } from 'framer-motion';
+import { motion, useAnimation, useMotionValueEvent, useScroll } from 'framer-motion';
 import { useState } from 'react';
 import { Link, useMatch } from 'react-router-dom';
 import styled from 'styled-components';
 
-const Wrapper = styled.div`
-  width: 100%;
-  min-width: 800px;
-  background-color: black;
-  position: fixed;
-  top: 0;
+const Nav = styled(motion.nav)`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  position: fixed;
+  width: 100%;
+  top: 0;
   font-size: 14px;
   padding: 20px 60px;
   color: white;
@@ -99,12 +97,25 @@ const LogoVariant = {
   },
 };
 
+const NavVariant = {
+  top: {
+    backgroundColor: 'rgba(0,0,0,0)',
+  },
+  down: {
+    backgroundColor: 'rgba(0,0,0,1)',
+  },
+};
+
 const Header = () => {
   const home = useMatch('/');
   const tv = useMatch('/tv');
 
   const [isSearch, setIsSearch] = useState(false);
   const inputAnimation = useAnimation();
+  //useAnimation 훅을 사용하여 시작 및 중지 메서드가 있는 AnimationControls을 만들 수 있음
+  const navAnimation = useAnimation();
+
+  const { scrollY } = useScroll();
 
   const handleSearch = () => {
     /**
@@ -123,9 +134,22 @@ const Header = () => {
 
     setIsSearch((prev) => !prev);
   };
+
+  // 스크롤 제어
+  useMotionValueEvent(scrollY, 'change', (latest) => {
+    if (latest > 80) {
+      navAnimation.start('down');
+    } else {
+      navAnimation.start('top');
+    }
+  });
   return (
     <>
-      <Wrapper>
+      <Nav
+        variants={NavVariant}
+        initial="top"
+        animate={navAnimation}
+      >
         <Col>
           <Logo
             variants={LogoVariant}
@@ -177,7 +201,7 @@ const Header = () => {
             />
           </Search>
         </Col>
-      </Wrapper>
+      </Nav>
     </>
   );
 };
